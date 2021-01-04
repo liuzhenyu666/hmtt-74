@@ -12,6 +12,9 @@ import { getRelativeTime } from '@/utils/date-time.js'
 Vue.config.productionTip = false
 Vue.prototype.$http = http // 将来页面中 => this.$http
 
+// 创建一个所有组件都能访问到的事件总线
+Vue.prototype.$eventBus = new Vue()
+
 Vue.filter('relative', (value) => {
   return getRelativeTime(value)
 })

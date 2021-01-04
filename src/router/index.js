@@ -15,7 +15,9 @@ const router = new VueRouter({
         { path: '/video', component: () => import('@/views/video') },
         { path: '/user', component: () => import('@/views/user') }
       ]
-    }
+    },
+    { path: '/search', component: () => import('@/views/search') },
+    { path: '/result', component: () => import('@/views/search/result.vue') }
   ]
 })
 

@@ -44,18 +44,25 @@ export default {
       isRefreshing: false
     }
   },
+  created () {
+    this.$eventBus.$on('del-article', obj => {
+      const { articleId, channelId } = obj
+      // 是否是当前频道：是, 删除; 否, 不处理
+      if (channelId !== this.channel.id) {
+        console.log('与我无关')
+        return
+      }
+      console.log('在list中找到文章id为articleId的元素, 并删除')
+      this.list = this.list.filter(item => item.art_id.toString() !== articleId)
+    })
+  },
   methods: {
     async onLoad () {
       if (!this.timestamp) {
-        console.log('666')
         this.timestamp = +new Date()
-        console.log(this.timestamp)
       }
-      console.log(this.channel.id, this.timestamp)
       const result = await reqGetArticles(this.channel.id, this.timestamp)
-      console.log(result)
       const arr = result.data.data.results
-      console.log(arr)
       this.list = [...this.list, ...arr]
       this.loading = false
       if (arr.length === 0) {

@@ -21,3 +21,15 @@ export const reqDisLikeArticle = (articleId) => {
     }
   })
 }
+
+export const reqReportArticle = (articleId, type) => {
+  console.log(articleId)
+  return http({
+    method: 'post',
+    url: '/v1_0/article/reports',
+    data: {
+      target: articleId,
+      type
+    }
+  })
+}

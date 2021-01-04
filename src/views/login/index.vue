@@ -41,7 +41,7 @@ export default {
   name: 'Login',
   data () {
     return {
-      mobile: '13912345678',
+      mobile: '18616115546',
       code: '246810',
       errMobileMsg: '',
       errCodeMsg: ''
